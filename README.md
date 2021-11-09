@@ -4,9 +4,9 @@ A reinterpretation of [the Borgesian Library of Babel](), for the medium of Twit
 
 ## TODO
 
-- [ ] A string of 160 characters is generated
-- [ ] The generated string takes a key input and provides a unique output
-- [ ] Two different inputs yield two different outputs
+- [x] A string of 160 characters is generated
+- [x] The generated string takes a key input and provides a unique output
+- [x] Two different inputs yield two different outputs
 - [ ] Once a day the bot will tweet a random tweet from its library
 - [ ] The bot replies to requests for a tweet with the following format
 
