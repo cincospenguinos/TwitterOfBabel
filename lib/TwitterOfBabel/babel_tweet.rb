@@ -12,6 +12,10 @@ module TwitterOfBabel
       @str = ''
     end
 
+    def response_to(username)
+      "#{self.to_s}\n@#{username} #TwitterOfBabel"
+    end
+
     def to_s
       while @str.length < TwitterOfBabel::MAX_TWEET_LENGTH do
         idx = prepped_rando.rand(CHARS.length)

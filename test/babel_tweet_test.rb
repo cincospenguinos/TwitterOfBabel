@@ -16,4 +16,12 @@ class BabelTweetTest < Minitest::Test
     assert_equal 160, t2.to_s.size
     refute_equal t1.to_s, t2.to_s
   end
+
+  def test_tweet_response_includes_various_bits
+    t = TwitterOfBabel::BabelTweet.new('0xab')
+
+    assert t.response_to('andreCLaFleur').include?('@andreCLaFleur')
+    assert t.response_to('andreCLaFleur').include?('#TwitterOfBabel')
+    assert t.response_to('andreCLaFleur').include?(t.to_s)
+  end
 end

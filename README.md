@@ -1,6 +1,6 @@
 # TwitterOfBabel
 
-A reinterpretation of [the Borgesian Library of Babel](), for the medium of Twitter.
+A reinterpretation of [the Borgesian Library of Babel](https://libraryofbabel.info/), for the medium of Twitter.
 
 ## TODO
 
