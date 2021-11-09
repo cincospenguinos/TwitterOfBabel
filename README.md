@@ -7,8 +7,7 @@ A reinterpretation of [the Borgesian Library of Babel](https://libraryofbabel.in
 - [x] A string of 160 characters is generated
 - [x] The generated string takes a key input and provides a unique output
 - [x] Two different inputs yield two different outputs
-- [ ] Once a day the bot will tweet a random tweet from its library
-- [ ] The bot replies to requests for a tweet with the following format
+- [x] The bot replies to requests for a tweet with the following format
 
 ```
 [text of the tweet]
