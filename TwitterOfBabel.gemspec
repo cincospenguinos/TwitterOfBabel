@@ -10,15 +10,15 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "A reinterpretation of the Borgesian Library of Babel for Twitter"
   spec.description   = "A reinterpretation of the Borgesian Library of Babel for Twitter"
-  spec.homepage      = ""
+  spec.homepage      = "https://www.github.com/cincospenguinos/TwitterOfBabel"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.4.0"
 
   spec.metadata["allowed_push_host"] = ""
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = ""
-  spec.metadata["changelog_uri"] = ""
+  spec.metadata["source_code_uri"] = "https://www.github.com/cincospenguinos/TwitterOfBabel"
+  spec.metadata["changelog_uri"] = "https://www.github.com/cincospenguinos/TwitterOfBabel/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
