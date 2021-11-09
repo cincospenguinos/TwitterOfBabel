@@ -15,3 +15,7 @@ A reinterpretation of [the Borgesian Library of Babel](), for the medium of Twit
 
 @accountReplyingTo #TwitterOfBabel
 ```
+
+## Notes
+
+* Each tweet is indexed by a hex value of 195 characters

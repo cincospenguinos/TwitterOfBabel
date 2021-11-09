@@ -1,10 +1,24 @@
 module TwitterOfBabel
+  MAX_TWEET_LENGTH = 160
+
   class BabelTweet
+    CHARS = 'abcdefghijklmnopqrstuvwxyz., '
+
+    attr_reader :prepped_rando
+
     def initialize(address)
+      @address = address.to_i(16)
+      @prepped_rando = Random.new(@address)
+      @str = ''
     end
 
     def to_s
-      'this is some amount of characters, but i do not know how many. perhaps by typing enough i will get the desired amount. maybe a few more? perhaps. just fifteen mo'
+      while @str.length < TwitterOfBabel::MAX_TWEET_LENGTH do
+        idx = prepped_rando.rand(CHARS.length)
+        @str += CHARS[idx]
+      end
+      
+      @str
     end
   end
 end
