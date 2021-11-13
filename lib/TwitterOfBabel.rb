@@ -8,6 +8,14 @@ require_relative "TwitterOfBabel/address_extractor"
 
 module TwitterOfBabel
   class TwitterOfBabel
+    def initialize(opts = {})
+      @consumer_key = opts[:consumer_key] || ENV['TOB_API_KEY']
+      @consumer_secret = opts[:consumer_secret] || ENV['TOB_SECRET']
+      @access_token = opts[:access_token] || ENV['TOB_ACCESS']
+      @access_token_secret = opts[:access_token_secret] || ENV['TOB_ACCESS_SECRET']
+      @memoize_file = opts[:memoize_file] || ENV['TOB_MEMOIZE_FILE']
+    end
+
     def respond_to_tweets
       client = twitter_client
       tweets = client.mentions_timeline
@@ -30,10 +38,10 @@ module TwitterOfBabel
 
     def twitter_client
       @twitter_client ||= Twitter::REST::Client.new do |config|
-        config.consumer_key = ENV['TOB_API_KEY']
-        config.consumer_secret = ENV['TOB_SECRET']
-        config.access_token = ENV['TOB_ACCESS']
-        config.access_token_secret = ENV['TOB_ACCESS_SECRET']
+        config.consumer_key = @consumer_key
+        config.consumer_secret = @consumer_secret
+        config.access_token = @access_token
+        config.access_token_secret = @access_token_secret
       end
     end
 
@@ -42,7 +50,7 @@ module TwitterOfBabel
     end
 
     def save_previous_tweets
-      File.open(ENV['TOB_MEMOIZE_FILE'], 'w') do |f|
+      File.open(@memoize_file, 'w') do |f|
         f.write(previous_tweets.to_yaml)
       end
     end
