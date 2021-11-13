@@ -9,7 +9,10 @@ Gem::Specification.new do |spec|
   spec.email         = ["cincospenguinos@gmail.com"]
 
   spec.summary       = "A reinterpretation of the Borgesian Library of Babel for Twitter"
-  spec.description   = "A reinterpretation of the Borgesian Library of Babel for Twitter"
+  spec.description   = <<~STR
+    Every imaginable tweet is encapsulated in this code. Give an address, and get the tweet corresponding to it.
+    Be warned, however: there is much folly and little wisdom in its cooridors.
+  STR
   spec.homepage      = "https://www.github.com/cincospenguinos/TwitterOfBabel"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.4.0"
