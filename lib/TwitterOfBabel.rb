@@ -27,7 +27,7 @@ module TwitterOfBabel
         }
 
       tweets.each do |t|
-        twitter_client.update(t[:tweet_text])
+        twitter_client.update(t[:tweet_text], in_reply_to_status_id: t[:tweet].id)
         previous_tweets << t[:tweet].id
       end
 

@@ -12,7 +12,7 @@ module TwitterOfBabel
     end
 
     def response_to(username)
-      "#{self.to_s}\n@#{username} #TwitterOfBabel"
+      "@#{username}\n#{self.to_s}\n#TwitterOfBabel"
     end
 
     def to_s
