@@ -15,3 +15,7 @@ get '/webhooks/twitter' do
     response_token: "sha256=#{response_token}".chomp
   }.to_json
 end
+
+post '/twitter-event' do
+  puts params.inspect
+end
