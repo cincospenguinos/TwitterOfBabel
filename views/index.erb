@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Twitter Of Babel</title>
+	<style>
+		@font-face {
+			/* Provided by Google, https://fonts.google.com/specimen/Merriweather#standard-styles */
+			font-family: 'Merriweather';
+			src: url('/assets/Merriweather-Regular.ttf');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@keyframes hex {
+			from { background-size: 20px }
+			to { background-size: 200px; }
+		}
+
+		* {
+			font-family: 'Merriweather';
+		}
+
+		p {
+			font-size: 1.5em;
+		}
+
+		a {
+			color: #0a0a0a;
+			text-decoration: none;
+		}
+
+		a:visited {
+			color: #222222;
+		}
+
+		a:hover {
+			color: blue;
+		}
+
+		body {
+			background: url('profile.jpg');
+			background-position: center;
+			background-size: 10px;
+			animation-name: hex;
+			animation-duration: 160s;
+			animation-iteration-count: infinite
+			animation-direction: alternate;
+		}
+
+		.content {
+			margin: 0 10%;
+		}
+
+		.header {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: #ccccccab;
+			border: 1px solid #ccccccab;
+			border-radius: 8px;
+		}
+
+		.header h1 {
+			font-family: 'Merriweather';
+			font-size: 10em;
+		}
+
+		.header p {
+			margin-top: 0;
+			margin-bottom: 24px;
+			margin-left: 10%;
+			margin-right: 10%;
+			font-size: 2em;
+		}
+
+		.time-to-tweet {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 0 20%;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<h1>The Twitter of Babel</h1>
+		<p>The entire library of Tweets available for your reading pleasure. Roam the database, but be warned: <a href="https://twitter.com/TwitOfBabel">there is much folly and little wisdom in its corridors</a>.</p>
+	</div>
+	<div class="content">
+		<h2>How do I browse the library?</h2>
+		<p>Simply tweet "@TwitOfBabel" any sequence of alphanumeric characters. Your tweet will act as an address into the library, and the bot will respond to your tweet with the corresponding tweet it discovered.</p>
+		<h2>How does it work?</h2>
+		<p>The source code is <a href="https://github.com/cincospenguinos/TwitterOfBabel">here</a>, but in short it relies on a tweet being made up of alphanumeric characters, and in doing so creating a base-36 integer that is used in tandem with a random number generator to "index" a tweet. You'd have to exhaust every permuation of integers represented as a base 36 string in order to read every possible 160-character tweet.</p>
+	</div>
+	<div class="time-to-tweet">
+		<h2>Ready to explore?</h2>
+		<p>Simply
+			<script>
+				const chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+				let address = '';
+
+				for (let i = 0; i < 5; i++) {
+					address += chars.charAt(Math.floor(Math.random() * chars.length));
+				}
+
+				document.write(`<a href="http://twitter.com/intent/tweet?text=What secrets lay in store for me at the address 0x${address}, @TwitOfBabel?">write your tweet</a> `);
+			</script>
+			and let the librarian lead you.
+		</p>
+	</div>
+</body>
+</html>
