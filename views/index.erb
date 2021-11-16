@@ -26,13 +26,9 @@
 			font-size: 1.5em;
 		}
 
-		a {
-			color: #0a0a0a;
+		a, a:visited {
+			color: #0a0aa0;
 			text-decoration: none;
-		}
-
-		a:visited {
-			color: #222222;
 		}
 
 		a:hover {
@@ -45,7 +41,7 @@
 			background-size: 10px;
 			animation-name: hex;
 			animation-duration: 160s;
-			animation-iteration-count: infinite
+			animation-iteration-count: infinite;
 			animation-direction: alternate;
 		}
 
@@ -80,6 +76,13 @@
 			flex-direction: column;
 			align-items: center;
 			margin: 0 20%;
+			background-color: #cccccc;
+			padding: 16px;
+			border-radius: 16px;
+		}
+
+		.time-to-tweet h2 {
+			font-size: 4em;
 		}
 	</style>
 </head>
@@ -90,23 +93,15 @@
 	</div>
 	<div class="content">
 		<h2>How do I browse the library?</h2>
-		<p>Simply tweet "@TwitOfBabel" any sequence of alphanumeric characters. Your tweet will act as an address into the library, and the bot will respond to your tweet with the corresponding tweet it discovered.</p>
+		<p>Simply tweet "@TwitOfBabel" any sequence of alphanumeric characters. Your tweet will act as an address into the library, and the librarian will respond to your tweet with the corresponding tweet it discovered.</p>
 		<h2>How does it work?</h2>
-		<p>The source code is <a href="https://github.com/cincospenguinos/TwitterOfBabel">here</a>, but in short it relies on a tweet being made up of alphanumeric characters, and in doing so creating a base-36 integer that is used in tandem with a random number generator to "index" a tweet. You'd have to exhaust every permuation of integers represented as a base 36 string in order to read every possible 160-character tweet.</p>
+		<p>Every tweet is stripped of all non-alphanumeric characters, leaving a base-36 integer made up of the alphanumeric characters of the tweet. This integer is used to seed an internal random number generator (RNG.) Assuming the underlying RNG provides a unique 160-character tweet for each individual integer, every tweet from <a href="https://twitter.com/TwitOfBabel">@TwitOfBabel</a> responding to a valid address will be entirely unique.</p>
+		<p><a href="https://github.com/cincospenguinos/TwitterOfBabel">The source code is also available for your perusal</a>.</p>
 	</div>
 	<div class="time-to-tweet">
+		<% address = (0..5).map { ('a'..'z').to_a[rand(26)] }.join %>
 		<h2>Ready to explore?</h2>
-		<p>Simply
-			<script>
-				const chars = '0123456789abcdefghijklmnopqrstuvwxyz';
-				let address = '';
-
-				for (let i = 0; i < 5; i++) {
-					address += chars.charAt(Math.floor(Math.random() * chars.length));
-				}
-
-				document.write(`<a href="http://twitter.com/intent/tweet?text=What secrets lay in store for me at the address 0x${address}, @TwitOfBabel?">write your tweet</a> `);
-			</script>
+		<p>Simply <a href="http://twitter.com/intent/tweet?text=What secrets lay in store for me at the address 0x<%= address %>, @TwitOfBabel?">write your tweet</a>
 			and let the librarian lead you.
 		</p>
 	</div>
