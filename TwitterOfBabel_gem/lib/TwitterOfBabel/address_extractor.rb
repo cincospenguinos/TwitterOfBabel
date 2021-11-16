@@ -1,15 +1,16 @@
 module TwitterOfBabel
   class AddressExtractor
-    ADDRESS_REGEX = /0x[a-f0-9]{1,195}/
+    ADDRESS_REGEX = /[^a-z0-9]/i
+    ACCEPTED_CHARS = /\A[a-z0-9]+\z/
 
     attr_reader :address
 
     def initialize(input_tweet)
-      @address = input_tweet.scan(ADDRESS_REGEX).last || ''
+      @address = input_tweet.downcase.gsub(/\s+/, '').gsub(ADDRESS_REGEX, '')
     end
 
     def valid?
-      !address.empty?
+      !address.empty? && address =~ ACCEPTED_CHARS
     end
 
     def to_s

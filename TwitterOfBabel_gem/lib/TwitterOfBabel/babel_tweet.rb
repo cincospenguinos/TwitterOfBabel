@@ -6,7 +6,7 @@ module TwitterOfBabel
     attr_reader :prepped_rando
 
     def initialize(address)
-      @address = address.to_i(16)
+      @address = address.to_i(36)
       @prepped_rando = Random.new(@address)
       @str = ''
     end
