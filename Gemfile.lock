@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    TwitterOfBabel (0.2.0)
+    TwitterOfBabel (0.4.0)
       twitter (~> 7.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
@@ -63,7 +63,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  TwitterOfBabel (~> 0.2)
+  TwitterOfBabel (~> 0.4)
   sinatra (~> 2.1)
 
 BUNDLED WITH
