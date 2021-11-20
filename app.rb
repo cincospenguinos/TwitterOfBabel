@@ -21,5 +21,5 @@ get '/webhooks/twitter' do
 end
 
 post '/webhooks/twitter' do
-  puts params.inspect
+  puts request.inspect
 end
