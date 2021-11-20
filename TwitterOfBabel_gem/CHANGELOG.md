@@ -1,3 +1,7 @@
+## [0.4.0]
+
+* Changed the gem to take simple parameters instead of the Twitter object thing
+
 ## [0.3.0]
 
 * There is no longer a memoization file; this option is no longer requested.

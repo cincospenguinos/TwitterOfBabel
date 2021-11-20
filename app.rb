@@ -6,7 +6,6 @@ get '/' do
   erb :index
 end
 
-# https://api.twitter.com/1.1/account_activity/all/prod/webhooks is our magic endpoint
 get '/webhooks/twitter' do
   if params['crc_token']
     digest = OpenSSL::HMAC.digest('sha256', ENV['TOB_SECRET'], params['crc_token'])
@@ -26,7 +25,10 @@ post '/webhooks/twitter' do
     req = JSON.parse(request.body.read)
 
     req['tweet_create_events'].each do |tweet|
-      puts ">>> #{tweet['id']}: '#{tweet['text']}', from '#{tweet['user']['screen_name']}'"
+      next if tweet['user']['screen_name'] == ENV['TOB_SCREEN_NAME']
+      TwitterOfBabel.new.respond_to(tweet['text'], tweet['id'], tweet['user']['screen_name'])
     end
   end
+
+  {}.to_json
 end

@@ -15,12 +15,12 @@ module TwitterOfBabel
       @access_token_secret = opts[:access_token_secret] || ENV['TOB_ACCESS_SECRET']
     end
 
-    def respond_to(tweet)
-      address = AddressExtractor.new(tweet.full_text)
-      return not_valid_address(tweet) unless address.valid? && tweet.user.screen_name
+    def respond_to(text, tweet_id, screen_name)
+      address = AddressExtractor.new(text)
+      return not_valid_address(screen_name, tweet_id) unless address.valid? && screen_name
 
-      b_tweet = BabelTweet.new(address.to_s).response_to(tweet.user.screen_name)
-      twitter_client.update(b_tweet, in_reply_to_status_id: tweet.id)
+      b_tweet = BabelTweet.new(address.to_s).response_to(screen_name)
+      twitter_client.update(b_tweet, in_reply_to_status_id: tweet_id)
       true
     end
 
@@ -35,9 +35,9 @@ module TwitterOfBabel
       end
     end
 
-    def not_valid_address(tweet)
-      tweet.update("@#{tweet.user.screen_name} the address you provided is invalid.",
-        in_reply_to_status_id: tweet.id)
+    def not_valid_address(screen_name, tweet_id)
+      tweet.update("@#{screen_name} the address you provided is invalid.",
+        in_reply_to_status_id: tweet_id)
     end
   end
 end
