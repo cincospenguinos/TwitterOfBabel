@@ -21,5 +21,6 @@ get '/webhooks/twitter' do
 end
 
 post '/webhooks/twitter' do
-  puts request.body.inspect
+  request.body.rewind
+  puts request.body.read.inspect
 end
