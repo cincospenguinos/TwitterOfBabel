@@ -21,10 +21,12 @@ get '/webhooks/twitter' do
 end
 
 post '/webhooks/twitter' do
-  request.body.rewind
-  req = JSON.parse(request.body.read)
+  if request.body.size > 0
+    request.body.rewind
+    req = JSON.parse(request.body.read)
 
-  req['tweet_create_events'].each do |tweet|
-    puts ">>> #{tweet['id']}: '#{tweet['text']}', from '#{tweet['user']['screen_name']}'"
+    req['tweet_create_events'].each do |tweet|
+      puts ">>> #{tweet['id']}: '#{tweet['text']}', from '#{tweet['user']['screen_name']}'"
+    end
   end
 end
