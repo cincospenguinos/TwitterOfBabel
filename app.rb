@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'json'
 require 'base64'
+require 'TwitterOfBabel'
 
 get '/' do
   erb :index
