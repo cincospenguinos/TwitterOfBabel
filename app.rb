@@ -27,7 +27,7 @@ post '/webhooks/twitter' do
 
     req['tweet_create_events'].each do |tweet|
       next if tweet['user']['screen_name'] == ENV['TOB_SCREEN_NAME']
-      TwitterOfBabel.new.respond_to(tweet['text'], tweet['id'], tweet['user']['screen_name'])
+      TwitterOfBabel::TwitterOfBabel.new.respond_to(tweet['text'], tweet['id'], tweet['user']['screen_name'])
     end
   end
 
