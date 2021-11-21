@@ -25,9 +25,11 @@ post '/webhooks/twitter' do
     request.body.rewind
     req = JSON.parse(request.body.read)
 
-    req['tweet_create_events'].each do |tweet|
-      next if tweet['user']['screen_name'] == ENV['TOB_SCREEN_NAME']
-      TwitterOfBabel::TwitterOfBabel.new.respond_to(tweet['text'], tweet['id'], tweet['user']['screen_name'])
+    unless req['tweet_create_events'].nil?
+      req['tweet_create_events'].each do |tweet|
+        next if tweet['user']['screen_name'] == ENV['TOB_SCREEN_NAME']
+        TwitterOfBabel::TwitterOfBabel.new.respond_to(tweet['text'], tweet['id'], tweet['user']['screen_name'])
+      end
     end
   end
 
